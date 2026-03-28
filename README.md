@@ -1,6 +1,6 @@
 <div align="center">
   <h1>HolyStitch</h1>
-  <p><strong>Instant Google Stitch → React conversion. Zero AI tokens.</strong></p>
+  <p><strong>Instant Google Stitch → React Compiler. Zero AI tokens.</strong></p>
   
   <img src=".github/assets/hero.gif" alt="HolyStitch Demo" width="100%">
   
