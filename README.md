@@ -175,11 +175,13 @@ Open an issue for patterns the compiler gets wrong. Open a PR for fixes.
 
 ## ⭐ Star History
 
-<div align="center">
-  <a href="https://star-history.com/#BaselAshraf81/holystitch&Date">
-    <img src="https://api.star-history.com/svg?repos=BaselAshraf81/holystitch&type=Date" alt="Star History Chart">
-  </a>
-</div>
+<a href="https://www.star-history.com/?repos=BaselAshraf81%2Fholystitch&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=BaselAshraf81/holystitch&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=BaselAshraf81/holystitch&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=BaselAshraf81/holystitch&type=date&legend=top-left" />
+ </picture>
+</a>
 
 ---
 
