@@ -182,6 +182,7 @@ Open an issue for patterns the compiler gets wrong. Open a PR for fixes.
    <img alt="Star History Chart" src="https://api.star-history.com/image?repos=BaselAshraf81/holystitch&type=date&legend=top-left" />
  </picture>
 </a>
+
 ---
 
 ## License
