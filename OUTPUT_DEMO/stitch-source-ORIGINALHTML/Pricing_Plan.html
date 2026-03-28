@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing | Obsidian</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#007ab8",
+              "primary-fixed": "#dfe0ff",
+              "on-primary-fixed": "#000965",
+              "surface-variant": "#343536",
+              "outline-variant": "#454652",
+              "on-secondary-fixed-variant": "#3f465a",
+              "primary-fixed-dim": "#bdc2ff",
+              "surface-container": "#1f2021",
+              "primary": "#bdc2ff",
+              "on-tertiary": "#003351",
+              "on-primary-container": "#fdfaff",
+              "inverse-on-surface": "#303032",
+              "primary-container": "#5e6ad2",
+              "error-container": "#93000a",
+              "background": "#121315",
+              "on-tertiary-fixed-variant": "#004b73",
+              "on-primary-fixed-variant": "#2e3aa2",
+              "on-surface-variant": "#c6c5d5",
+              "tertiary": "#92ccff",
+              "error": "#ffb4ab",
+              "on-secondary-container": "#b1b8d0",
+              "surface-container-highest": "#343536",
+              "on-primary": "#121f8b",
+              "on-error": "#690005",
+              "inverse-primary": "#4854bb",
+              "on-secondary-fixed": "#141b2d",
+              "surface-container-high": "#292a2b",
+              "on-tertiary-fixed": "#001d31",
+              "surface-bright": "#38393a",
+              "secondary": "#bfc6de",
+              "secondary-container": "#41495d",
+              "on-error-container": "#ffdad6",
+              "surface-dim": "#121315",
+              "on-secondary": "#293043",
+              "inverse-surface": "#e3e2e3",
+              "surface-container-lowest": "#0d0e0f",
+              "on-background": "#e3e2e3",
+              "tertiary-fixed": "#cce5ff",
+              "surface": "#121315",
+              "secondary-fixed-dim": "#bfc6de",
+              "on-tertiary-container": "#fbfbff",
+              "on-surface": "#e3e2e3",
+              "tertiary-fixed-dim": "#92ccff",
+              "surface-tint": "#bdc2ff",
+              "secondary-fixed": "#dbe2fb",
+              "outline": "#908f9e",
+              "surface-container-low": "#1b1c1d"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary/30 selection:text-primary">
+<!-- TopNavBar -->
+<nav class="bg-[#121315]/70 backdrop-blur-xl border-b border-[#454652]/20 shadow-2xl shadow-black/40 fixed top-0 w-full z-50">
+<div class="flex items-center justify-between px-8 py-4 max-w-[1400px] mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#E3E2E3]">Obsidian</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] transition-all" href="#">Method</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] transition-all" href="#">Customer</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] transition-all" href="#">Changelog</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#BDC2FF] font-semibold" href="#">Pricing</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] transition-all" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] transition-all px-4 py-2">Log in</button>
+<button class="font-['Inter'] font-medium tracking-tight text-sm bg-primary-container text-on-primary-container px-5 py-2 rounded-lg hover:scale-95 transition-all duration-200">Sign up</button>
+</div>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="max-w-[1400px] mx-auto px-8 mb-20 text-center">
+<span class="inline-block px-3 py-1 bg-surface-container border border-outline-variant/20 rounded-full text-[10px] font-semibold tracking-[0.1em] text-primary uppercase mb-6">Transparent Architecture</span>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-6 leading-tight">Plans for the <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">Precision-Minded</span>.</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl mx-auto font-medium">Infrastructure built for scale, designed for speed. Choose the environment that fits your deployment lifecycle.</p>
+</section>
+<!-- Pricing Grid -->
+<section class="max-w-[1400px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+<!-- Free Plan -->
+<div class="bg-surface-container-low p-8 flex flex-col h-full border border-outline-variant/10">
+<div class="mb-8">
+<h3 class="text-on-surface text-xl font-bold tracking-tight mb-2">Free</h3>
+<p class="text-on-surface-variant text-sm">For independent architects exploring the foundations.</p>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-extrabold text-on-surface">$0</span>
+<span class="text-on-surface-variant text-sm font-medium">/mo</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Single project instance</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>500MB storage capacity</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Standard API latency</span>
+</li>
+</ul>
+<button class="w-full py-3 px-6 bg-surface-container-highest text-on-surface text-sm font-bold tracking-tight border border-outline-variant/30 hover:bg-surface-bright transition-colors">Start Building</button>
+</div>
+<!-- Pro Plan -->
+<div class="relative bg-surface-container p-10 flex flex-col h-full border-2 border-primary-container shadow-2xl shadow-primary-container/20 overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary-container text-on-primary-container px-4 py-1 text-[10px] font-black tracking-widest uppercase">Most Preferred</div>
+<!-- Subtle Gradient Glow -->
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="mb-8 relative z-10">
+<h3 class="text-on-surface text-2xl font-bold tracking-tight mb-2">Pro</h3>
+<p class="text-on-surface-variant text-sm">Engineered for high-performance squads and scaling apps.</p>
+</div>
+<div class="mb-8 relative z-10">
+<span class="text-5xl font-extrabold text-on-surface">$49</span>
+<span class="text-on-surface-variant text-sm font-medium">/mo</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow relative z-10">
+<li class="flex items-start gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-semibold">Unlimited active projects</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>25GB SSD storage allocation</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Priority edge-network routing</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<span>Advanced telemetry dashboard</span>
+</li>
+</ul>
+<button class="w-full py-4 px-6 bg-gradient-to-br from-primary to-primary-container text-on-primary text-sm font-bold tracking-tight rounded-md hover:opacity-90 transition-opacity relative z-10">Deploy Now</button>
+</div>
+<!-- Enterprise Plan -->
+<div class="bg-surface-container-low p-8 flex flex-col h-full border border-outline-variant/10">
+<div class="mb-8">
+<h3 class="text-on-surface text-xl font-bold tracking-tight mb-2">Enterprise</h3>
+<p class="text-on-surface-variant text-sm">Custom-built compliance and dedicated throughput.</p>
+</div>
+<div class="mb-8">
+<span class="text-4xl font-extrabold text-on-surface">Custom</span>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="shield">shield</span>
+<span>SOC2 compliance package</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="support_agent">support_agent</span>
+<span>Dedicated 24/7 technical lead</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="hub">hub</span>
+<span>Custom multi-cloud peering</span>
+</li>
+</ul>
+<button class="w-full py-3 px-6 bg-surface-container-highest text-on-surface text-sm font-bold tracking-tight border border-outline-variant/30 hover:bg-surface-bright transition-colors">Contact Sales</button>
+</div>
+</section>
+<!-- Compare Table -->
+<section class="max-w-[1400px] mx-auto px-8 mb-32">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface mb-12 text-center">Compare features</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/10">
+<th class="py-6 px-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Architecture</th>
+<th class="py-6 px-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Free</th>
+<th class="py-6 px-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Pro</th>
+<th class="py-6 px-4 text-xs font-black uppercase tracking-widest text-on-surface-variant">Enterprise</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr>
+<td class="py-6 px-4 text-sm font-medium text-on-surface">API Rate Limiting</td>
+<td class="py-6 px-4 text-sm text-on-surface-variant">1,000/hr</td>
+<td class="py-6 px-4 text-sm text-on-surface">Unlimited</td>
+<td class="py-6 px-4 text-sm text-on-surface">Custom Burst</td>
+</tr>
+<tr>
+<td class="py-6 px-4 text-sm font-medium text-on-surface">Global Edge Cache</td>
+<td class="py-6 px-4 text-sm text-on-surface-variant">US-East Only</td>
+<td class="py-6 px-4 text-sm text-on-surface">32 Regions</td>
+<td class="py-6 px-4 text-sm text-on-surface">Global + On-Prem</td>
+</tr>
+<tr>
+<td class="py-6 px-4 text-sm font-medium text-on-surface">RBAC Permissions</td>
+<td class="py-6 px-4 text-sm text-on-surface-variant">Basic</td>
+<td class="py-6 px-4 text-sm text-on-surface">Advanced</td>
+<td class="py-6 px-4 text-sm text-on-surface">Custom Logic</td>
+</tr>
+<tr>
+<td class="py-6 px-4 text-sm font-medium text-on-surface">Log Retention</td>
+<td class="py-6 px-4 text-sm text-on-surface-variant">24 Hours</td>
+<td class="py-6 px-4 text-sm text-on-surface">30 Days</td>
+<td class="py-6 px-4 text-sm text-on-surface">Indefinite</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="max-w-[1400px] mx-auto px-8 mb-32">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<div>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface mb-6">Frequently <br/>Architected.</h2>
+<p class="text-on-surface-variant">Everything you need to know about our scaling logic and billing cycles.</p>
+</div>
+<div class="space-y-8">
+<div>
+<h4 class="text-on-surface font-bold text-lg mb-2">Can I upgrade at any time?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Yes. Upgrades are instantaneous. We prorate your billing to the exact millisecond of deployment.</p>
+</div>
+<div>
+<h4 class="text-on-surface font-bold text-lg mb-2">What happens if I exceed storage?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">We provide a 10% overflow buffer. Beyond that, we'll notify you to scale your plan or manage your assets.</p>
+</div>
+<div>
+<h4 class="text-on-surface font-bold text-lg mb-2">Do you offer academic discounts?</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">We support the next generation of architects. Contact our academic outreach team for custom credentials.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bold Footer CTA -->
+<section class="max-w-[1400px] mx-auto px-8 mb-20">
+<div class="relative bg-surface-container-high py-20 px-8 text-center overflow-hidden">
+<!-- Background Image Decoration -->
+<div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
+<img alt="Abstract digital network" class="w-full h-full object-cover" data-alt="Abstract network of glowing blue lines and data points against a dark cosmic background symbolizing global connectivity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA8CfLrqkFEPTl2E7tVBQueieA5DQCl6eBmWqAr14O78kXp4E8YrTFqEmYTS4M-lEs4wS2NXBhrSVoDIanIXErB3_2zGDE7i8Z7K5Pg9sBXkfq8fQZrUK1pmB8IIgU3SLpkXSyL-fwGWbJ7vfYYCyE6SUAw8S0KIrS-Y7VzZxVXB7GLYaS4aWYhKD2GARpBNz6cJGww9IeNI_dsXigs_GpyJ-tVqwv1COD_iwsSc8Ny43a4_SKuZmxOpptLqkW7C8kRDBQ_JfSEkPF"/>
+</div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-8">Ready to deploy the future?</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<button class="px-8 py-4 bg-primary text-on-primary font-bold text-sm rounded-lg hover:scale-95 transition-transform duration-200">Get Started for Free</button>
+<button class="px-8 py-4 bg-transparent border border-outline-variant text-on-surface font-bold text-sm hover:bg-surface-container transition-colors">Talk to Engineering</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#121315] w-full py-16 px-8 mt-20 border-t border-[#454652]/10">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-12 max-w-[1400px] mx-auto">
+<div class="col-span-2 md:col-span-1">
+<div class="text-lg font-black text-[#E3E2E3] mb-6">Obsidian</div>
+<p class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2]">© 2024 Obsidian Architect. Built for precision.</p>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2]">Social</span>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Twitter</a>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">GitHub</a>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Discord</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2]">Legal</span>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Terms</a>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Privacy</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2]">Resources</span>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Documentation</a>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Status</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2]">Contact</span>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Support</a>
+<a class="text-[12px] text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Sales</a>
+</div>
+</div>
+</footer>
+</body></html>

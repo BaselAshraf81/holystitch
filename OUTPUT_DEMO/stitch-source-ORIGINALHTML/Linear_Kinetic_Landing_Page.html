@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Obsidian — Precision Software Architecture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#303032",
+              "error": "#ffb4ab",
+              "surface-container-low": "#1b1c1d",
+              "primary-container": "#5e6ad2",
+              "on-primary": "#121f8b",
+              "tertiary-fixed": "#cce5ff",
+              "on-surface-variant": "#c6c5d5",
+              "on-primary-fixed-variant": "#2e3aa2",
+              "surface": "#121315",
+              "inverse-primary": "#4854bb",
+              "on-error": "#690005",
+              "surface-bright": "#38393a",
+              "secondary-fixed": "#dbe2fb",
+              "primary": "#bdc2ff",
+              "on-primary-fixed": "#000965",
+              "secondary-container": "#41495d",
+              "outline-variant": "#454652",
+              "surface-container-high": "#292a2b",
+              "primary-fixed-dim": "#bdc2ff",
+              "primary-fixed": "#dfe0ff",
+              "on-tertiary-container": "#fbfbff",
+              "surface-variant": "#343536",
+              "inverse-surface": "#e3e2e3",
+              "secondary-fixed-dim": "#bfc6de",
+              "outline": "#908f9e",
+              "secondary": "#bfc6de",
+              "surface-container-lowest": "#0d0e0f",
+              "on-tertiary-fixed": "#001d31",
+              "surface-tint": "#bdc2ff",
+              "on-surface": "#e3e2e3",
+              "error-container": "#93000a",
+              "on-primary-container": "#fdfaff",
+              "on-secondary": "#293043",
+              "on-background": "#e3e2e3",
+              "on-error-container": "#ffdad6",
+              "on-tertiary": "#003351",
+              "tertiary": "#92ccff",
+              "tertiary-fixed-dim": "#92ccff",
+              "tertiary-container": "#007ab8",
+              "on-secondary-fixed": "#141b2d",
+              "surface-container-highest": "#343536",
+              "on-secondary-fixed-variant": "#3f465a",
+              "surface-container": "#1f2021",
+              "background": "#121315",
+              "on-secondary-container": "#b1b8d0",
+              "on-tertiary-fixed-variant": "#004b73",
+              "surface-dim": "#121315"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .text-glow {
+        text-shadow: 0 0 20px rgba(189, 194, 255, 0.3);
+      }
+      body {
+        background-color: #121315;
+        color: #e3e2e3;
+      }
+    </style>
+</head>
+<body class="font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#121315]/70 backdrop-blur-xl border-b border-[#454652]/20 shadow-2xl shadow-black/40">
+<div class="flex items-center justify-between px-8 py-4 max-w-[1400px] mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-xl font-bold tracking-tighter text-[#E3E2E3]">Obsidian</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#BDC2FF] font-semibold hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1 rounded" href="#">Method</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1 rounded" href="#">Customer</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1 rounded" href="#">Changelog</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1 rounded" href="#">Pricing</a>
+<a class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1 rounded" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-['Inter'] font-medium tracking-tight text-sm text-[#C6C5D5] hover:text-[#E3E2E3] transition-all">Log in</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-4 py-1.5 rounded-lg text-sm font-semibold hover:scale-95 duration-200 ease-in-out">Sign up</button>
+</div>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="max-w-[1400px] mx-auto px-8 text-center mb-32">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/20 mb-8 scale-95 md:scale-100">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Version 4.0 is now live</span>
+</div>
+<h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9] text-glow">
+                Architect the <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-container to-tertiary">future of scale.</span>
+</h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl leading-relaxed mb-12 font-medium">
+                Obsidian is the command center for high-performance engineering teams. Precision-engineered for clarity, speed, and architectural integrity.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold text-lg shadow-lg shadow-primary/10 hover:scale-[0.98] transition-transform">
+                    Build your workspace
+                </button>
+<button class="w-full sm:w-auto px-8 py-4 bg-surface-container border border-outline-variant/30 text-on-surface rounded-xl font-bold text-lg hover:bg-surface-container-high transition-colors">
+                    Watch the film
+                </button>
+</div>
+</section>
+<!-- Product Preview Image -->
+<section class="max-w-[1200px] mx-auto px-8 mb-40">
+<div class="relative rounded-2xl overflow-hidden border border-outline-variant/20 shadow-2xl bg-surface-container-lowest p-1 md:p-4">
+<div class="aspect-video bg-surface-container-low rounded-xl relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 mix-blend-screen" data-alt="Modern high-fidelity dark mode software interface with minimalist graphs, code blocks, and architectural diagrams in deep purple and obsidian tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD_7UyDjaRMATSSbNPwm34l2rxKfwT3jkxVLyNzowt_aW7gqjwPtOTKuXiy0Vo8u61T688DLc54l5RF3Wyerb-gUKHxLCVpnw3d8yQ1rP_Oew1qCn6ydj5O2IH8YUWBzTFolP7p6Ujnkqy657pcyPY1eVIlmSV-7TbE76-_Vd5uB1buy3rJukKccGDfCTmgaQkKMz0sRKaPdllA3X4ABvS94GNPVxFBOAvitjJgMRXO-TYQR_-DczkkEKL4KHXoU20yfGtngEPAKDB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Customer Logos -->
+<section class="max-w-[1400px] mx-auto px-8 mb-40 text-center">
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 mb-12">Powering the next generation of giants</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+<span class="text-2xl font-black italic tracking-tighter">VERTEX</span>
+<span class="text-2xl font-black italic tracking-tighter">NEXUS</span>
+<span class="text-2xl font-black italic tracking-tighter">QUANTUM</span>
+<span class="text-2xl font-black italic tracking-tighter">SYNAPSE</span>
+<span class="text-2xl font-black italic tracking-tighter">ORBIT</span>
+</div>
+</section>
+<!-- Bento Grid Features -->
+<section class="max-w-[1400px] mx-auto px-8 mb-40">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<!-- Large Card -->
+<div class="md:col-span-8 bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/30 transition-colors group">
+<div class="flex flex-col h-full">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">architecture</span>
+<h3 class="text-3xl font-bold mb-4 tracking-tight">Kinetic Architecture</h3>
+<p class="text-on-surface-variant leading-relaxed max-w-md mb-12">
+                            Visualize your entire software stack in a dynamic, living graph that updates as your team pushes code.
+                        </p>
+<div class="mt-auto aspect-video bg-surface-container rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" data-alt="Abstract 3D network visualization with glowing nodes and connecting lines in deep violet and indigo palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoonobcUnFClqLd6mA9pW81uX8S2rbBa2bkJFqr9i8a-Ya9BJp4buYCRVQO19c3LM_6gPOBgR3ch0USnRfttKtiuDHL8KgwCRRhONzm4MPUw7Tz71UvC5baReiB48VAlHFdov96y_7yDTde7jTjVWxgPcDGBfMgPVDKnNiAaa5rxJwVwyn7oTYF1R2-iesnqoa0F1tbmmz-P0NusZDZQjF9J6DJl1i8axEvS_VqwYx-bGV3P5PdZRFu0leGpN-mEi1aLVSvq_D8iFt"/>
+</div>
+</div>
+</div>
+<!-- Small Card -->
+<div class="md:col-span-4 bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/30 transition-colors">
+<div class="flex flex-col h-full">
+<span class="material-symbols-outlined text-tertiary mb-6 text-4xl">bolt</span>
+<h3 class="text-3xl font-bold mb-4 tracking-tight">Built for Speed</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                            Zero-latency interactions. Every action is performed in less than 50ms.
+                        </p>
+<div class="mt-auto p-6 bg-surface-container-highest/50 rounded-xl font-mono text-xs text-primary">
+<div class="flex justify-between mb-2"><span>query_time:</span><span>0.002s</span></div>
+<div class="flex justify-between mb-2"><span>render_pass:</span><span>0.014s</span></div>
+<div class="flex justify-between"><span>status:</span><span class="text-green-400">OPTIMIZED</span></div>
+</div>
+</div>
+</div>
+<!-- Mid Card -->
+<div class="md:col-span-4 bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/30 transition-colors">
+<span class="material-symbols-outlined text-primary-container mb-6 text-4xl">terminal</span>
+<h3 class="text-2xl font-bold mb-4 tracking-tight">Command Palette</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        Control your entire workflow without leaving the keyboard. CMD+K to unlock everything.
+                    </p>
+</div>
+<!-- Large Card 2 -->
+<div class="md:col-span-8 bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/30 transition-colors group">
+<div class="flex items-center justify-between gap-12 flex-col md:flex-row h-full">
+<div class="flex-1">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">security</span>
+<h3 class="text-3xl font-bold mb-4 tracking-tight">Immutable Security</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                Enterprise-grade encryption that never compromises on performance. Your data, locked in obsidian.
+                            </p>
+</div>
+<div class="flex-1 w-full h-full min-h-[200px] bg-surface-container rounded-xl overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-40" data-alt="Digital representation of secure data encryption with neon blue geometric shapes and glowing hardware circuits" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWZXJX2VrnegVW3aWG3mGwXklbXNg1JCPj0PJGV8CIpuXXJLIxGOvZYOoss8-64u1MmHt06zz1HICciOA4fTNRrAh5k5VnqLEYpfqMEOaTdQLz4Lei9cHjtApt3Q3Fe9qAzvtLOR4Oo65G1rXo1aZf4vRy2hsHvqmWP_vvK755TFp_CofjmJ490njRuWbX4KW-hK20pUTC5GD8De_utN_e-MrLq6RrS-Xy8M9qQ-_FX52f9OWf23CopmW2Sastv9QdLAxGotopPuPb"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- High Fidelity UI Showcase -->
+<section class="max-w-[1400px] mx-auto px-8 mb-40">
+<div class="flex flex-col md:flex-row items-center gap-20">
+<div class="flex-1">
+<h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight tracking-tighter">Precision in <br/>Every Pixel.</h2>
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">layers</span>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2">Layered Organization</h4>
+<p class="text-on-surface-variant text-sm">Deep nesting without the clutter. Manage complex hierarchies with intuitive spatial layouts.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 bg-tertiary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">history</span>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2">Infinite Versioning</h4>
+<p class="text-on-surface-variant text-sm">Travel back in time. Every change is indexed and reversible with a single click.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 bg-primary-container/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">group</span>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-2">Real-time Synergy</h4>
+<p class="text-on-surface-variant text-sm">See who is building what, where. No more merge conflicts or duplicated efforts.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full">
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/30 to-tertiary/30 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative bg-surface-container-low rounded-2xl border border-outline-variant/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Clean and professional dashboard interface showing complex data analytics with minimalist charts and a dark slate background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc5M_qAWna4TrhU9CN0wpVJxECjSpXklGNC8td2QcYUBSeDSz_PjsKHfb0z1wGrtCsKML_0OQy2OEfQ_hmx-jEFZOy25E1yU9Se9aBn3d8-qFq9gsVz6Ac8mVPaOCYVa8dLRgTJ1xYGIueoyLsoq2suFMsqPoJEC2t_u4SY_jWj-LBi3BIsvCO4Awyee0zNOTrOm7SgEsYbGMv92g73ybHtT_15_LCLc5x5zbqm2F_OiirSg8qn2kgSyyzkmeUlLqBUhIsJVLXGCNe"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="max-w-[1400px] mx-auto px-8 mb-40">
+<div class="bg-gradient-to-br from-surface-container-low to-surface-container rounded-3xl p-12 md:p-24 text-center border border-outline-variant/10 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-tertiary/5 rounded-full blur-[100px] -ml-48 -mb-48"></div>
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-8 relative z-10">Stop managing. <br/>Start architecting.</h2>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+<button class="px-10 py-5 bg-on-surface text-surface rounded-xl font-black text-xl hover:scale-105 transition-transform">Get Started for Free</button>
+<button class="px-10 py-5 bg-transparent text-on-surface border border-outline-variant/30 rounded-xl font-bold text-xl hover:bg-surface-container-high transition-colors">Book a Demo</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-8 mt-20 bg-[#121315] border-t border-[#454652]/10">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-12 max-w-[1400px] mx-auto">
+<div class="col-span-2">
+<span class="text-lg font-black text-[#E3E2E3] block mb-6">Obsidian</span>
+<p class="text-[#C6C5D5] font-['Inter'] text-sm leading-relaxed max-w-xs mb-8">
+                    The next-generation architecture platform for high-velocity software teams. Built for precision.
+                </p>
+<p class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2]">© 2024 Obsidian Architect. Built for precision.</p>
+</div>
+<div>
+<h5 class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-bold text-[#E3E2E3] mb-6">Product</h5>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Method</a></li>
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Pricing</a></li>
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Changelog</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-bold text-[#E3E2E3] mb-6">Social</h5>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Twitter</a></li>
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">GitHub</a></li>
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Discord</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-bold text-[#E3E2E3] mb-6">Legal</h5>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Terms</a></li>
+<li><a class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5] hover:text-[#BDC2FF] transition-colors" href="#">Privacy</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

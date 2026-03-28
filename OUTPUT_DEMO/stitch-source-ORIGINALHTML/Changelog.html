@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-container": "#007ab8",
+            "primary-fixed": "#dfe0ff",
+            "on-primary-fixed": "#000965",
+            "surface-variant": "#343536",
+            "outline-variant": "#454652",
+            "on-secondary-fixed-variant": "#3f465a",
+            "primary-fixed-dim": "#bdc2ff",
+            "surface-container": "#1f2021",
+            "primary": "#bdc2ff",
+            "on-tertiary": "#003351",
+            "on-primary-container": "#fdfaff",
+            "inverse-on-surface": "#303032",
+            "primary-container": "#5e6ad2",
+            "error-container": "#93000a",
+            "background": "#121315",
+            "on-tertiary-fixed-variant": "#004b73",
+            "on-primary-fixed-variant": "#2e3aa2",
+            "on-surface-variant": "#c6c5d5",
+            "tertiary": "#92ccff",
+            "error": "#ffb4ab",
+            "on-secondary-container": "#b1b8d0",
+            "surface-container-highest": "#343536",
+            "on-primary": "#121f8b",
+            "on-error": "#690005",
+            "inverse-primary": "#4854bb",
+            "on-secondary-fixed": "#141b2d",
+            "surface-container-high": "#292a2b",
+            "on-tertiary-fixed": "#001d31",
+            "surface-bright": "#38393a",
+            "secondary": "#bfc6de",
+            "secondary-container": "#41495d",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#121315",
+            "on-secondary": "#293043",
+            "inverse-surface": "#e3e2e3",
+            "surface-container-lowest": "#0d0e0f",
+            "on-background": "#e3e2e3",
+            "tertiary-fixed": "#cce5ff",
+            "surface": "#121315",
+            "secondary-fixed-dim": "#bfc6de",
+            "on-tertiary-container": "#fbfbff",
+            "on-surface": "#e3e2e3",
+            "tertiary-fixed-dim": "#92ccff",
+            "surface-tint": "#bdc2ff",
+            "secondary-fixed": "#dbe2fb",
+            "outline": "#908f9e",
+            "surface-container-low": "#1b1c1d"
+          },
+          fontFamily: {
+            "headline": ["Inter", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    body { background-color: #121315; }
+    .glass-nav { background: rgba(18, 19, 21, 0.7); backdrop-filter: blur(24px); }
+  </style>
+</head>
+<body class="font-body text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar from JSON mapping -->
+<nav class="fixed top-0 w-full z-50 bg-[#121315]/70 backdrop-blur-xl border-b border-[#454652]/20 shadow-2xl shadow-black/40">
+<div class="flex items-center justify-between px-8 py-4 max-w-[1400px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#E3E2E3]">Obsidian</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#C6C5D5] font-['Inter'] font-medium tracking-tight text-sm hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1.5 rounded-lg" href="#">Method</a>
+<a class="text-[#C6C5D5] font-['Inter'] font-medium tracking-tight text-sm hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1.5 rounded-lg" href="#">Customer</a>
+<a class="text-[#BDC2FF] font-semibold font-['Inter'] tracking-tight text-sm hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1.5 rounded-lg" href="#">Changelog</a>
+<a class="text-[#C6C5D5] font-['Inter'] font-medium tracking-tight text-sm hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1.5 rounded-lg" href="#">Pricing</a>
+<a class="text-[#C6C5D5] font-['Inter'] font-medium tracking-tight text-sm hover:text-[#E3E2E3] hover:bg-[#1F2021]/50 transition-all px-3 py-1.5 rounded-lg" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#C6C5D5] font-['Inter'] font-medium tracking-tight text-sm hover:text-[#E3E2E3] transition-colors">Log in</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-['Inter'] font-semibold tracking-tight text-sm hover:scale-95 transition-all duration-200">Sign up</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-6 max-w-[1100px] mx-auto">
+<!-- Header Section -->
+<header class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div>
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-4">Changelog</h1>
+<p class="text-on-surface-variant max-w-xl text-lg leading-relaxed">
+          The architectural record of Obsidian. Constant evolution, technical precision, and performance-first updates.
+        </p>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-sm">notifications</span>
+<span class="font-mono text-xs uppercase tracking-widest text-on-surface-variant">Stay updated</span>
+</div>
+</header>
+<!-- Timeline Container -->
+<div class="relative">
+<!-- Continuous Vertical Line -->
+<div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-outline-variant/20 -translate-x-1/2 hidden md:block"></div>
+<!-- Entry 1: Latest -->
+<section class="relative mb-32 group">
+<div class="flex flex-col md:flex-row items-start md:items-center mb-12">
+<!-- Desktop Center Node -->
+<div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary ring-8 ring-background group-hover:ring-primary/20 transition-all duration-300"></div>
+<div class="md:w-1/2 md:pr-16 md:text-right">
+<span class="font-mono text-xs tracking-[0.2em] uppercase text-primary mb-2 block">March 14, 2024</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Architectural Core Refactor</h2>
+</div>
+<div class="md:w-1/2 md:pl-16 mt-2 md:mt-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-primary-container/20 text-primary border border-primary/30">v4.1.0</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 flex flex-col gap-6 order-2 lg:order-1">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                We've completely overhauled the database indexing engine. Queries are now up to 40% faster on large datasets. 
+              </p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span>Parallel execution for complex schema migrations.</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span>New memory-mapped storage engine for hot paths.</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span>Native support for WASM plugins in the runtime.</span>
+</li>
+</ul>
+</div>
+<button class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary hover:text-on-surface transition-colors self-start">
+              Read technical deep-dive <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="lg:col-span-7 order-1 lg:order-2">
+<div class="relative overflow-hidden rounded-xl bg-surface-container shadow-2xl">
+<div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none"></div>
+<img class="w-full aspect-video object-cover" data-alt="Technical code editor interface showing high-performance database optimization metrics and performance charts in a dark mode UI dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnbgKF9mQSgB5XwzvdT_HDHk8ODR-a3f04aDGGwVZhPVijo8r6-wqpiBG1tcMmTQFfUq1TvBfvkNlJffd1WCUEyX8ioy-2eDXLbhntH7CxBkFNxpR-uXKndacP0tKW_wcl01G2IgnNYG96iOYwX4VlfBaPvdXNlaCLoounBZFrA6KBL1UfHcgxDllMv_PLfvHMiUDeqS8PePg4TpjFMM4pY_EsNaMsEISch72kIXTCpTR8018d3izyjn-o6b8XqYMKKvVZhnuJ6X30"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Entry 2 -->
+<section class="relative mb-32 group">
+<div class="flex flex-col md:flex-row items-start md:items-center mb-12">
+<div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-outline-variant ring-8 ring-background group-hover:bg-primary transition-all duration-300"></div>
+<div class="md:w-1/2 md:pr-16 md:text-right order-1">
+<span class="font-mono text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-2 block">February 28, 2024</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Real-time Visual Debugger</h2>
+</div>
+<div class="md:w-1/2 md:pl-16 mt-2 md:mt-0 order-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-surface-container-highest text-on-surface-variant border border-outline-variant/30">v4.0.8</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-7 order-2 lg:order-1">
+<div class="relative overflow-hidden rounded-xl bg-surface-container shadow-2xl">
+<img class="w-full aspect-video object-cover" data-alt="Sophisticated node-based visual debugging interface with glowing connection lines and intricate data flow diagrams on a dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbhXR8kTLKrg3lWf1RWw1amIB7FSMc2XciRLk8VFJu0QQDRmFXcPwI_o_ix3YCua4KYYrSoPD_-4DHqAT3lmMHUVGANvU-cjRX-h6hl7o8Ydy6tpAau8jLyvMyG_Lmn_SYC_d1XULpoSGOFlupOm0ZievjeFC4nGHqFWemsLjRbkf9rpH_aYryJ-HayS-Am2vX5uFQuefUKXL0_LAniWd9UvNLK6UsqsUI3cMidwm6IFcrtWOyfQSPlVPDS61wpCgX_xvU1uMiVMhQ"/>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-6 order-1 lg:order-2">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-on-surface-variant leading-relaxed">
+                Experience your data flows visually. The new Debugger allows for point-in-time playback of state mutations with zero performance overhead.
+              </p>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">Node-Graph</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">State-Diff</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono text-on-surface-variant uppercase tracking-tighter">Live-Reload</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Entry 3 -->
+<section class="relative mb-32 group">
+<div class="flex flex-col md:flex-row items-start md:items-center mb-12">
+<div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-outline-variant ring-8 ring-background group-hover:bg-primary transition-all duration-300"></div>
+<div class="md:w-1/2 md:pr-16 md:text-right">
+<span class="font-mono text-xs tracking-[0.2em] uppercase text-on-surface-variant mb-2 block">January 15, 2024</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Obsidian SDK Alpha</h2>
+</div>
+<div class="md:w-1/2 md:pl-16 mt-2 md:mt-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-surface-container-highest text-on-surface-variant border border-outline-variant/30">v4.0.0</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 flex flex-col gap-6 order-2 lg:order-1">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-on-surface-variant leading-relaxed">
+                The long-awaited SDK is here. Build custom components and extensions using our Type-Safe architecture. Full documentation is now live for all early access partners.
+              </p>
+</div>
+</div>
+<div class="lg:col-span-7 order-1 lg:order-2">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-2xl p-4 border border-outline-variant/20">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+</div>
+<pre class="font-mono text-[13px] leading-relaxed text-on-surface-variant/80 overflow-x-auto"><code><span class="text-primary">import</span> { Architect } <span class="text-primary">from</span> <span class="text-tertiary">'@obsidian/sdk'</span>;
+
+<span class="text-on-surface-variant/40">// Initialize the engine</span>
+<span class="text-primary">const</span> app = <span class="text-primary">new</span> Architect({
+  precision: <span class="text-tertiary">'ultra'</span>,
+  theme: <span class="text-tertiary">'obsidian-dark'</span>
+});
+
+app.<span class="text-primary">mount</span>(<span class="text-tertiary">'#root'</span>);</code></pre>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Final CTA -->
+<div class="mt-40 text-center">
+<div class="inline-block p-12 bg-surface-container-low rounded-2xl border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+<h3 class="text-3xl font-bold mb-4 tracking-tight">Ready to build?</h3>
+<p class="text-on-surface-variant mb-8 max-w-sm mx-auto">Join 10k+ architects building the next generation of performance tools.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-lg font-semibold hover:scale-105 transition-transform">Get Started</button>
+<button class="bg-surface-container-high text-on-surface px-8 py-3 rounded-lg font-semibold border border-outline-variant/30 hover:bg-surface-variant transition-colors">View Roadmap</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer from JSON mapping -->
+<footer class="bg-[#121315] w-full py-16 px-8 mt-20 border-t border-[#454652]/10">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-12 max-w-[1400px] mx-auto">
+<div class="col-span-2">
+<span class="text-lg font-black text-[#E3E2E3] block mb-4">Obsidian Architect</span>
+<p class="text-[#C6C5D5] text-sm max-w-xs leading-relaxed opacity-80">Forging precision-engineered tools for the modern digital era. Built for developers, by architects.</p>
+</div>
+<div>
+<h4 class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2] mb-6">Product</h4>
+<div class="flex flex-col gap-3">
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">Twitter</a>
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">Discord</a>
+</div>
+</div>
+<div>
+<h4 class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2] mb-6">Resources</h4>
+<div class="flex flex-col gap-3">
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">Documentation</a>
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">Tutorials</a>
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">API</a>
+</div>
+</div>
+<div>
+<h4 class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#5E6AD2] mb-6">Legal</h4>
+<div class="flex flex-col gap-3">
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">Terms</a>
+<a class="text-[#C6C5D5] text-xs font-medium hover:text-[#BDC2FF] transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+</div>
+</div>
+</div>
+<div class="max-w-[1400px] mx-auto mt-16 pt-8 border-t border-[#454652]/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-['Inter'] uppercase tracking-[0.05em] text-[10px] font-semibold text-[#C6C5D5]">© 2024 Obsidian Architect. Built for precision.</p>
+<div class="flex gap-6">
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+</div>
+</div>
+</footer>
+</body></html>

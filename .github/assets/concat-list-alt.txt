@@ -1,3 +1,0 @@
-file 'hero.mp4'
-file 'p1.mp4'
-file 'p2.mp4'
