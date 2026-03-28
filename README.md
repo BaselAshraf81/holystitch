@@ -1,84 +1,86 @@
 <div align="center">
-  <h1>HolyStitch</h1>
-  <p><strong>Instant Google Stitch → React Compiler. Zero AI tokens.</strong></p>
-  
-  <img src=".github/assets/hero.gif" alt="HolyStitch Demo" width="100%">
-  
-  <p>
-    <a href="https://github.com/BaselAshraf81/holystitch/issues">Report a bug</a>
-  </p>
-  
-  <p>
-    <a href="http://hits.dwyl.com/BaselAshraf81/holystitch">
-      <img src="https://hits.dwyl.com/BaselAshraf81/holystitch.svg?style=flat" alt="Hit Count">
-    </a>
-  </p>
+
+<h1>⚡ HolyStitch</h1>
+
+<p><strong>Google Stitch → Next.js. Compiled, not prompted. Zero tokens.</strong></p>
+
+<p>
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+  <a href="http://hits.dwyl.com/BaselAshraf81/holystitch">
+    <img src="https://hits.dwyl.com/BaselAshraf81/holystitch.svg?style=flat" alt="Hit Count">
+  </a>
+</p>
+
+<img src=".github/assets/hero.gif" alt="HolyStitch Demo" width="100%">
+
+<p>
+  <a href="#-getting-started">Get Started</a> ·
+  <a href="#-how-it-works">How It Works</a> ·
+  <a href="#-output-structure">Output</a> ·
+  <a href="https://github.com/BaselAshraf81/holystitch/issues">Report a Bug</a>
+</p>
+
 </div>
 
 ---
 
-## Why HolyStitch?
+## The problem with asking AI to convert designs
 
-Converting a Stitch design to React by asking an AI means thousands of tokens, hallucinated class names, broken JSX, and a back-and-forth that takes longer than just writing the components yourself.
+Every token is wasted guessing at class names it can't see, reconstructing structure it doesn't have, and hallucinating props that don't exist. Then you spend the next twenty minutes fixing it.
 
-HolyStitch is a compiler, not a prompt. It reads your Stitch project directly from the API and writes a complete, working Next.js project to disk — deterministically, instantly, and for free.
+HolyStitch is a **compiler**, not a prompt. It reads your Stitch project directly from the API and writes a complete, working Next.js project to disk — deterministically, instantly, and without spending a single AI token on the conversion itself.
 
-| | Asking an AI | HolyStitch |
+|  | Asking an AI | **HolyStitch** |
 |---|---|---|
-| Token usage | Thousands | ~0 |
-| Errors | Common | Build-verified |
-| Tailwind theme | Lost or guessed | Extracted exactly |
-| Shared components | Duplicated | Detected and deduplicated |
-| Time | Minutes of back-and-forth | Seconds |
+| Token usage | Thousands | **~0** |
+| Correctness | Hit or miss | **Build-verified** |
+| Tailwind theme | Lost or guessed | **Extracted exactly** |
+| Shared components | Duplicated across files | **Detected and deduplicated** |
+| Speed | Minutes of back-and-forth | **Seconds** |
 
 ---
 
-## See it in action
+## ✨ How it works
 
-<div align="center">
-  <video src=".github/assets/combined-hero.mp4" width="100%" controls></video>
-  <p><em>Watch the complete workflow: setup, conversion, and output</em></p>
-</div>
+HolyStitch runs as an MCP tool inside your IDE. You give it a Stitch project ID — it handles everything else.
 
-The video above shows the full process of using HolyStitch as an MCP tool in your IDE — from configuration to generating a complete Next.js project.
+```
+Stitch API  →  Fetch screens  →  Parse components  →  Compile JSX  →  Write project
+```
 
----
+Specifically, it:
 
-## How it works
+1. **Fetches** every screen from your Stitch project via the API
+2. **Reads** the `<!-- ComponentName -->` markers Stitch embeds in the HTML
+3. **Splits** each screen into named React components with correct parent → child relationships
+4. **Compiles** HTML to valid JSX — attributes, inline styles, void elements, icon fonts, all of it
+5. **Deduplicates** components shared across screens and writes them once
+6. **Extracts** your exact Tailwind theme: colors, fonts, dark mode config
+7. **Writes** a complete Next.js project, ready to `npm install && npm run dev`
 
-HolyStitch is an MCP tool. You give it your Stitch API key and a project ID — it handles the rest.
-
-1. Fetches every screen from your Stitch project via the API
-2. Reads the `<!-- ComponentName -->` markers Stitch embeds in the HTML
-3. Splits each screen into named React components with correct parent → child relationships
-4. Compiles HTML to JSX (attributes, styles, void elements, icon fonts, everything)
-5. Detects components shared across screens and writes them once
-6. Extracts your Tailwind theme, colors, fonts, and dark mode config
-7. Writes a complete Next.js project to whatever folder you choose — ready to `npm install && npm run dev`
-
-The AI in your IDE then handles the finishing touches (routing, font tokens, any broken JSX) and asks you to review the result in your browser.
+Your AI then handles the finishing touches — routing, font tokens, any edge-case JSX — and asks you to review the result in the browser.
 
 ---
 
-## Getting started
+## 🚀 Getting started
 
 ### 1. Get your Stitch API key
 
 Go to your Stitch project settings and copy your API key.
 
-### 2. Get your project ID
+### 2. Find your project ID
 
 Open your Stitch project. The ID is in the URL:
 
 ```
 https://stitch.withgoogle.com/project/12828868370598194178
                                        ^^^^^^^^^^^^^^^^^^^
-                                       this is your project ID
 ```
 
-### 3. Add HolyStitch to your IDE
+### 3. Configure your IDE
 
-**Claude Desktop** — edit `claude_desktop_config.json`:
+**Claude Desktop** — add to `claude_desktop_config.json`:
 
 ```json
 {
@@ -94,67 +96,84 @@ https://stitch.withgoogle.com/project/12828868370598194178
 }
 ```
 
-**Cursor / Windsurf / other MCP hosts** — add the same configuration to your IDE's MCP settings file.
+**Cursor / Windsurf / other MCP hosts** — add the same block to your IDE's MCP settings file.
 
 ### 4. Run the conversion
 
 Tell your AI assistant:
 
-> Convert my Stitch project `12828868370598194178` into a Next.js app and put it at `/Users/alice/projects/my-app`
+> Convert my Stitch project `12828868370598194178` into a Next.js app at `/Users/alice/projects/my-app`
 
-That's it. The tool runs, writes every file, and your AI works through the checklist automatically.
+That's it. HolyStitch runs, writes every file, and your AI works through the post-conversion checklist automatically.
 
 ---
 
-## What gets generated
+## 📁 Output structure
 
 ```
 my-app/
 ├── components/
-│   ├── TopNavBar.tsx       ← shared across all pages
-│   ├── Footer.tsx          ← shared across all pages
+│   ├── TopNavBar.tsx          ← shared across all pages
+│   ├── Footer.tsx             ← shared across all pages
 │   ├── HeroSection.tsx
 │   ├── PricingCard.tsx
 │   └── ...
 ├── app/
-│   ├── page.tsx            ← route: /
+│   ├── page.tsx               ← route: /
 │   ├── changelog/
-│   │   └── page.tsx        ← route: /changelog
+│   │   └── page.tsx           ← route: /changelog
 │   └── pricing-plan/
-│       └── page.tsx        ← route: /pricing-plan
-├── stitch-source/          ← original HTML kept for reference
-├── tailwind.config.js      ← your exact Stitch theme
+│       └── page.tsx           ← route: /pricing-plan
+├── stitch-source/             ← original HTML kept for reference
+├── tailwind.config.js         ← your exact Stitch theme
 ├── package.json
 ├── tsconfig.json
-└── project-context.md      ← routing table + checklist for the AI
+└── project-context.md         ← routing table + AI checklist
 ```
 
 ---
 
-## Options
+## ⚙️ Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
 | `framework` | `nextjs` | `nextjs` or `vite` |
 | `language` | `typescript` | `typescript` or `javascript` |
-| `screenIds` | all screens | Convert only specific screens by ID |
+| `screenIds` | *(all screens)* | Pass specific screen IDs to convert a subset |
 
 ---
 
-## What the compiler handles
+## 🔧 What the compiler handles
 
-- All HTML → JSX attribute renames (`class` → `className`, `for` → `htmlFor`, etc.)
-- Inline style strings → style objects, including complex values like `url()`, `calc()`, `var()`, `font-variation-settings`
-- Material Symbols and Material Icons rendered correctly (the icon name text is stripped so the font displays the glyph instead of the word)
-- Curly braces in `<pre><code>` blocks escaped so code examples don't break JSX
-- Duplicate attributes deduplicated — `data-alt` is promoted to `alt` and the original removed
-- `'use client'` added to any Next.js component with event handlers, hooks, or buttons
-- Google Fonts loaded via `next/font/google`; icon fonts stay as CSS imports
-- Shared components detected by content similarity and written once
+HolyStitch goes beyond naive HTML-to-JSX conversion. It covers the edge cases that trip up LLMs:
+
+- **Attribute renames** — `class` → `className`, `for` → `htmlFor`, all standard HTML → JSX rewrites
+- **Inline styles** — style strings → style objects, including `url()`, `calc()`, `var()`, and `font-variation-settings`
+- **Icon fonts** — Material Symbols and Material Icons rendered correctly (icon name text is stripped so the font renders the glyph, not the word)
+- **JSX-safe code blocks** — curly braces in `<pre><code>` blocks are escaped so code examples don't break the JSX parser
+- **Duplicate attributes** — deduplicated automatically; `data-alt` is promoted to `alt` and the original removed
+- **Client components** — `'use client'` is added to any Next.js component with event handlers, hooks, or buttons
+- **Fonts** — Google Fonts loaded via `next/font/google`; icon fonts remain as CSS imports
+- **Shared components** — detected by content similarity and written once, no matter how many screens use them
 
 ---
 
-## Star History
+## 🤝 Contributing
+
+Contributions are welcome. HolyStitch is a compiler, and the best contributions are **failing test cases**: a snippet of Stitch HTML that produces wrong JSX, plus the expected output.
+
+```bash
+git clone https://github.com/BaselAshraf81/holystitch
+cd holystitch
+npm install
+npm run build
+```
+
+Open an issue for patterns the compiler gets wrong. Open a PR for fixes.
+
+---
+
+## ⭐ Star History
 
 <div align="center">
   <a href="https://star-history.com/#BaselAshraf81/holystitch&Date">
@@ -164,21 +183,6 @@ my-app/
 
 ---
 
-## Contributing
-
-Contributions are very welcome. This project is a compiler — if you find a Stitch HTML pattern it doesn't handle correctly, the best contribution is a failing test case with the input HTML and the expected JSX output.
-
-```bash
-git clone https://github.com/BaselAshraf81/holystitch
-cd holystitch
-npm install
-npm run build
-```
-
-Open issues for patterns the compiler gets wrong, and PRs for fixes.
-
----
-
 ## License
 
-MIT
+MIT © [Basel Ashraf](https://github.com/BaselAshraf81)
