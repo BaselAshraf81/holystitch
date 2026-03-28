@@ -14,6 +14,7 @@
 
 <img src=".github/assets/hero.gif" alt="HolyStitch Demo" width="100%">
 
+▶️ **[Watch it in action](https://www.youtube.com/watch?v=KfkVDPthE64)**
 <p>
   <a href="#-getting-started">Get Started</a> ·
   <a href="#-how-it-works">How It Works</a> ·
