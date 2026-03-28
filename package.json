@@ -1,0 +1,15 @@
+{
+  "name": "stitch-to-react",
+  "version": "0.1.0",
+  "description": "Turn AI-generated Stitch HTML screens into production-ready React apps",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "dev": "npm run dev -w packages/mcp-server",
+    "lint": "tsc --noEmit --workspaces"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
