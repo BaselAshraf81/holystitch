@@ -1,18 +1,23 @@
-# HolyStitch
-
-**Instant Google Stitch → React conversion. Zero AI tokens.**
-
-[![HitCount](https://hits.dwyl.com/BaselAshraf81/holystitch.svg?style=flat)](http://hits.dwyl.com/BaselAshraf81/holystitch)
-
-[holystitch.dev](https://holystitch.dev) · [Report a bug](https://github.com/BaselAshraf81/holystitch/issues)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=BaselAshraf81/holystitch&type=Date)](https://star-history.com/#BaselAshraf81/holystitch&Date)
+<div align="center">
+  <h1>HolyStitch</h1>
+  <p><strong>Instant Google Stitch → React conversion. Zero AI tokens.</strong></p>
+  
+  <img src=".github/assets/hero.gif" alt="HolyStitch Demo" width="100%">
+  
+  <p>
+    <a href="https://github.com/BaselAshraf81/holystitch/issues">Report a bug</a>
+  </p>
+  
+  <p>
+    <a href="http://hits.dwyl.com/BaselAshraf81/holystitch">
+      <img src="https://hits.dwyl.com/BaselAshraf81/holystitch.svg?style=flat" alt="Hit Count">
+    </a>
+  </p>
+</div>
 
 ---
 
-## The problem
+## Why HolyStitch?
 
 Converting a Stitch design to React by asking an AI means thousands of tokens, hallucinated class names, broken JSX, and a back-and-forth that takes longer than just writing the components yourself.
 
@@ -25,6 +30,17 @@ HolyStitch is a compiler, not a prompt. It reads your Stitch project directly fr
 | Tailwind theme | Lost or guessed | Extracted exactly |
 | Shared components | Duplicated | Detected and deduplicated |
 | Time | Minutes of back-and-forth | Seconds |
+
+---
+
+## See it in action
+
+<div align="center">
+  <video src=".github/assets/combined-hero.mp4" width="100%" controls></video>
+  <p><em>Watch the complete workflow: setup, conversion, and output</em></p>
+</div>
+
+The video above shows the full process of using HolyStitch as an MCP tool in your IDE — from configuration to generating a complete Next.js project.
 
 ---
 
@@ -44,7 +60,7 @@ The AI in your IDE then handles the finishing touches (routing, font tokens, any
 
 ---
 
-## Quickstart
+## Getting started
 
 ### 1. Get your Stitch API key
 
@@ -78,7 +94,7 @@ https://stitch.withgoogle.com/project/12828868370598194178
 }
 ```
 
-**Cursor / Windsurf / other MCP hosts** → see [holystitch.dev](https://holystitch.dev) for IDE-specific config snippets.
+**Cursor / Windsurf / other MCP hosts** — add the same configuration to your IDE's MCP settings file.
 
 ### 4. Run the conversion
 
@@ -135,6 +151,16 @@ my-app/
 - `'use client'` added to any Next.js component with event handlers, hooks, or buttons
 - Google Fonts loaded via `next/font/google`; icon fonts stay as CSS imports
 - Shared components detected by content similarity and written once
+
+---
+
+## Star History
+
+<div align="center">
+  <a href="https://star-history.com/#BaselAshraf81/holystitch&Date">
+    <img src="https://api.star-history.com/svg?repos=BaselAshraf81/holystitch&type=Date" alt="Star History Chart">
+  </a>
+</div>
 
 ---
 

@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "Turn AI-generated Stitch HTML screens into production-ready React apps",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "npm run build --workspaces",
     "dev": "npm run dev -w packages/mcp-server",
@@ -11,5 +13,13 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.40.0"
+  },
+  "dependencies": {
+    "canvas": "^3.2.2",
+    "gif-encoder-2": "^1.0.5",
+    "puppeteer": "^24.40.0"
   }
 }

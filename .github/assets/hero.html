@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HolyStitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080808;
+    --accent: #f0e040;
+    --accent2: #ff4d4d;
+    --react: #61dafb;
+    --white: #f5f5f5;
+    --dim: #555;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.04; pointer-events: none; z-index: 100;
+  }
+
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 99;
+  }
+
+  .glow { position:fixed; border-radius:50%; filter:blur(130px); pointer-events:none; z-index:1; }
+  .glow-a { width:700px; height:400px; background:rgba(240,224,64,0.055); top:-80px; left:-180px; animation:drift 14s ease-in-out infinite alternate; }
+  .glow-b { width:500px; height:500px; background:rgba(97,218,251,0.04); bottom:-120px; right:-80px; animation:drift 14s ease-in-out 7s infinite alternate; }
+  @keyframes drift { to { transform:translate(25px,18px); } }
+
+  /* ── STAGE ── */
+  .stage {
+    display:flex; flex-direction:column; align-items:center;
+    gap:22px; position:relative; z-index:10; padding:40px;
+  }
+
+  /* ── TITLE ROW ── */
+  .title-row { display:flex; align-items:center; gap:0; line-height:1; }
+
+  .holy-wrap {
+    position:relative; display:inline-block;
+    opacity:0; transform:translateY(36px) skewX(-5deg);
+    animation:holy-appear 0.65s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;
+  }
+  @keyframes holy-appear { to { opacity:1; transform:translateY(0) skewX(0deg); } }
+
+  .holy {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(72px,12vw,128px);
+    letter-spacing:-0.02em;
+    color:var(--accent);
+    display:block;
+    text-shadow:0 0 50px rgba(240,224,64,0.28),0 0 100px rgba(240,224,64,0.07);
+  }
+
+  .gr,.gc {
+    position:absolute; inset:0;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(72px,12vw,128px);
+    letter-spacing:-0.02em;
+    display:block; pointer-events:none; opacity:0;
+  }
+  .gr { color:var(--accent2); }
+  .gc { color:var(--react); }
+
+  .doing-glitch .gr { animation:glR 0.16s steps(1) forwards; }
+  .doing-glitch .gc { animation:glC 0.16s steps(1) forwards; }
+
+  @keyframes glR {
+    0%  { opacity:.8; clip-path:inset(10% 0 75% 0); transform:translateX(5px); }
+    30% { clip-path:inset(55% 0 25% 0); transform:translateX(-4px); }
+    60% { clip-path:inset(80% 0 5%  0); transform:translateX(3px); }
+    100%{ opacity:0; clip-path:inset(0 0 100% 0); }
+  }
+  @keyframes glC {
+    0%  { opacity:.5; clip-path:inset(65% 0 15% 0); transform:translateX(-5px); }
+    40% { clip-path:inset(25% 0 60% 0); transform:translateX(4px); }
+    80% { clip-path:inset(70% 0 10% 0); transform:translateX(-2px); }
+    100%{ opacity:0; clip-path:inset(0 0 100% 0); }
+  }
+
+  .slash {
+    position:absolute; left:-6px; right:-6px; top:51%;
+    height:5px; background:var(--accent2);
+    transform:scaleX(0) rotate(-2deg); transform-origin:left center;
+    animation:slash-in 0.4s cubic-bezier(0.22,1,0.36,1) 1.55s forwards;
+    box-shadow:0 0 14px rgba(255,77,77,0.65); border-radius:1px;
+  }
+  @keyframes slash-in { to { transform:scaleX(1) rotate(-2deg); } }
+
+  .uline {
+    position:absolute; bottom:-10px; left:0; right:0; height:2px;
+    background:linear-gradient(90deg,var(--accent) 0%,transparent 80%);
+    transform:scaleX(0); transform-origin:left;
+    animation:line-in 0.9s cubic-bezier(0.22,1,0.36,1) 1.65s forwards;
+  }
+  @keyframes line-in { to { transform:scaleX(1); } }
+
+  /* ── STITCH SVG ── */
+  .stitch-wrap {
+    opacity:0; transform:translateX(-10px);
+    animation:sw-in 0.7s cubic-bezier(0.22,1,0.36,1) 0.8s forwards;
+  }
+  @keyframes sw-in { to { opacity:1; transform:translateX(0); } }
+
+  .stitch-svg { width:clamp(200px,34vw,440px); height:auto; }
+
+  .stitch-svg path {
+    fill:#fff; fill-opacity:0;
+    stroke:rgba(255,255,255,0.55); stroke-width:0.3;
+    stroke-dasharray:3000; stroke-dashoffset:3000;
+    animation:draw 1.3s ease-out 0.9s forwards, fill-p 0.5s ease-out 1.9s forwards;
+  }
+  .stitch-svg path:nth-child(2) {
+    animation:draw 1.1s ease-out 1.05s forwards, fill-p 0.4s ease-out 1.95s forwards;
+  }
+  @keyframes draw   { to { stroke-dashoffset:0; } }
+  @keyframes fill-p { to { fill-opacity:1; stroke-width:0; } }
+
+  /* ── CONVERSION ROW ── */
+  .conversion {
+    display:flex; align-items:center; gap:14px;
+    opacity:0; animation:fade-up 0.6s ease 2.2s forwards;
+  }
+  .conv-label { font-size:11px; letter-spacing:0.09em; color:var(--dim); text-transform:uppercase; }
+
+  .arrow { display:flex; align-items:center; width:70px; }
+  .arrow-line {
+    flex:1; height:2px;
+    background:linear-gradient(90deg,#333 0%,var(--react) 100%);
+    border-radius:1px;
+  }
+  .arrow-head {
+    width:0; height:0;
+    border-left:8px solid var(--react);
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    flex-shrink:0;
+  }
+
+  .react-atom {
+    width:30px; height:30px;
+    filter:drop-shadow(0 0 7px rgba(97,218,251,0.55));
+    animation:spin 12s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  /* ── TAGLINE (JS typewriter) ── */
+  .tagline {
+    display:flex; align-items:center; gap:3px;
+    font-size:clamp(11px,1.5vw,14px); letter-spacing:0.06em;
+    color:#c8c8c8;        /* ← much brighter */
+    opacity:0;
+  }
+  .tagline.visible { opacity:1; }
+  .tcursor {
+    display:inline-block; width:2px; height:1.1em;
+    background:var(--accent); vertical-align:middle; flex-shrink:0;
+    animation:blink 0.65s step-end infinite;
+  }
+  .tcursor.done { animation:none; opacity:0; }
+  @keyframes blink { 50%{ opacity:0; } }
+
+  /* ── BADGES ── */
+  .badges {
+    display:flex; gap:10px; align-items:center;
+    opacity:0; animation:fade-up 0.5s ease 5.2s forwards;
+    flex-wrap:wrap; justify-content:center;
+  }
+
+  .badge {
+    display:flex; flex-direction:column; align-items:center;
+    gap:4px; padding:8px 16px;
+    border-radius:4px; border:1px solid;
+    min-width:96px; text-align:center;
+  }
+  .bval { font-size:15px; font-weight:700; letter-spacing:-0.02em; line-height:1; }
+  .blbl { font-size:9px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.55; white-space:nowrap; }
+
+  .b-tokens { color:var(--accent);  border-color:rgba(240,224,64,0.35);  background:rgba(240,224,64,0.06); }
+  .b-react  { color:var(--react);   border-color:rgba(97,218,251,0.35);  background:rgba(97,218,251,0.06); }
+  .b-mcp    { color:#b9a9ff;        border-color:rgba(185,169,255,0.35); background:rgba(185,169,255,0.06); }
+
+  .dot { width:4px; height:4px; border-radius:50%; background:#2a2a2a; }
+
+  @keyframes fade-up {
+    from { opacity:0; transform:translateY(8px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow glow-a"></div>
+<div class="glow glow-b"></div>
+
+<div class="stage">
+
+  <div class="title-row">
+    <div class="holy-wrap" id="hw">
+      <span class="holy">Holy</span>
+      <span class="gr" aria-hidden="true">Holy</span>
+      <span class="gc" aria-hidden="true">Holy</span>
+      <span class="slash"></span>
+      <span class="uline"></span>
+    </div>
+    <div class="stitch-wrap">
+      <svg class="stitch-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 24" fill="none" aria-label="Stitch">
+        <g clip-path="url(#a)">
+          <path d="M8.07 22.258c-1.63 0-3.095-.476-4.395-1.428-1.3-.953-2.197-2.29-2.692-4.01l2.912-1.182c.293 1.08.806 1.969 1.538 2.664.75.678 1.648 1.017 2.692 1.017.97 0 1.794-.247 2.472-.742.677-.513 1.016-1.208 1.016-2.087 0-.806-.302-1.465-.906-1.978-.586-.53-1.621-1.062-3.104-1.593l-1.236-.44c-1.319-.457-2.426-1.116-3.324-1.977-.897-.86-1.345-1.996-1.345-3.406 0-.97.265-1.867.796-2.691.531-.824 1.264-1.474 2.197-1.95.953-.495 2.024-.742 3.214-.742 1.721 0 3.094.421 4.12 1.263 1.025.824 1.712 1.758 2.06 2.802L11.31 6.959c-.202-.623-.586-1.172-1.154-1.648-.567-.476-1.3-.714-2.197-.714s-1.657.229-2.28.687c-.604.457-.906 1.043-.906 1.757 0 .678.274 1.236.824 1.676.55.44 1.41.86 2.582 1.263l1.236.412c1.684.586 2.984 1.355 3.9 2.307.934.934 1.4 2.189 1.4 3.763 0 1.282-.329 2.362-.988 3.241a5.987 5.987 0 0 1-2.527 1.923 8.04 8.04 0 0 1-3.131.632Zm14.47-.22a5.191 5.191 0 0 1-1.703-.275 3.722 3.722 0 0 1-1.29-.824c-.788-.769-1.181-1.84-1.181-3.213v-6.867h-2.39V8.195h2.39V4.13h3.02v4.065h3.324v2.664h-3.323v6.208c0 .75.146 1.281.44 1.593.274.366.722.549 1.345.549.531 0 1.053-.156 1.566-.467v2.939c-.641.238-1.374.357-2.198.357Zm6.803-16.15a2.033 2.033 0 0 1-1.456-.577 2.033 2.033 0 0 1-.576-1.456c0-.567.192-1.043.576-1.428a1.984 1.984 0 0 1 1.456-.604c.568 0 1.044.201 1.428.604.403.385.605.86.605 1.428s-.202 1.053-.605 1.456c-.384.385-.86.577-1.428.577Zm-1.51 2.307h3.02v13.623h-3.02V8.195Zm12.115 13.843a5.192 5.192 0 0 1-1.703-.275 3.722 3.722 0 0 1-1.29-.824c-.788-.769-1.181-1.84-1.181-3.213v-6.867h-2.39V8.195h2.39V4.13h3.02v4.065h3.324v2.664h-3.323v6.208c0 .75.146 1.281.44 1.593.274.366.722.549 1.345.549.531 0 1.053-.156 1.566-.467v2.939c-.641.238-1.374.357-2.198.357Zm10.72.22c-1.356 0-2.574-.312-3.654-.934a6.587 6.587 0 0 1-2.527-2.582c-.604-1.117-.906-2.362-.906-3.735 0-1.392.302-2.637.906-3.736a6.587 6.587 0 0 1 2.527-2.582c1.08-.622 2.298-.934 3.653-.934 1.502 0 2.774.358 3.818 1.072a5.978 5.978 0 0 1 2.307 2.774l-2.774 1.153c-.659-1.483-1.813-2.224-3.46-2.224-.697 0-1.346.192-1.95.576-.605.367-1.09.889-1.456 1.566-.367.677-.55 1.456-.55 2.335s.183 1.657.55 2.334a4.229 4.229 0 0 0 1.455 1.593c.605.366 1.255.55 1.95.55.843 0 1.575-.193 2.198-.577.622-.403 1.098-.97 1.428-1.703l2.719 1.181a6.685 6.685 0 0 1-2.39 2.801c-1.061.715-2.343 1.072-3.845 1.072ZM59.37 2.152h3.02v5.713l-.164 2.143h.165c.384-.66.961-1.2 1.73-1.62a5.12 5.12 0 0 1 2.5-.633c1.721 0 3.012.504 3.873 1.511.86.989 1.29 2.344 1.29 4.065v8.487h-3.02v-8.075c0-1.08-.266-1.886-.797-2.417-.532-.53-1.236-.796-2.115-.796-.678 0-1.282.192-1.813.576-.513.385-.916.898-1.209 1.539a4.832 4.832 0 0 0-.44 2.032v7.141h-3.02V2.152ZM127.937 12c0-5.967-4.837-10.804-10.805-10.804H94.005C88.038 1.196 83.201 6.033 83.2 12c0 5.967 4.838 10.804 10.805 10.804h23.127c5.968 0 10.805-4.837 10.805-10.804Zm.977 0c0 6.508-5.275 11.782-11.782 11.782H94.005c-6.507 0-11.782-5.275-11.782-11.781 0-6.507 5.275-11.782 11.782-11.782h23.127c6.507 0 11.782 5.275 11.782 11.782Z"/>
+          <path d="M93.215 16.037V7.643h3.013c.43 0 .824.097 1.184.293.367.187.66.453.88.797.226.336.34.727.34 1.172 0 .414-.107.774-.318 1.079a1.997 1.997 0 0 1-.832.691v.047c.414.133.754.372 1.02.716.274.343.41.75.41 1.219 0 .469-.117.883-.351 1.242-.235.352-.544.63-.926.833a2.612 2.612 0 0 1-1.243.305h-3.177Zm.996-3.822v2.872h2.24a1.4 1.4 0 0 0 .773-.211c.22-.149.387-.332.504-.551.118-.227.176-.453.176-.68 0-.234-.062-.461-.187-.68a1.444 1.444 0 0 0-1.313-.75H94.21Zm0-.95h2.017a1.4 1.4 0 0 0 .762-.2c.21-.14.371-.312.48-.515.118-.203.176-.41.176-.621a1.376 1.376 0 0 0-.633-1.125 1.266 1.266 0 0 0-.738-.212H94.21v2.673Zm6.033 4.772V7.643h4.854v.95h-3.857v2.778h3.482v.938h-3.482v2.778h3.857v.95h-4.854Zm8.065 0V8.592h-2.356v-.95h5.698v.95h-2.345v7.445h-.997Zm3.08 0 3.189-8.394h1.125l3.189 8.394h-1.09l-.856-2.31h-3.611l-.856 2.31h-1.09Zm5.217-3.248-1.114-3.024-.328-.903h-.047l-.328.903-1.114 3.024h2.931Z"/>
+        </g>
+        <defs>
+          <clipPath id="a"><path fill="#fff" d="M0 0h128.945v24H0z"/></clipPath>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <!-- CONVERSION -->
+  <div class="conversion">
+    <span class="conv-label">Google Stitch</span>
+    <div class="arrow">
+      <div class="arrow-line"></div>
+      <div class="arrow-head"></div>
+    </div>
+    <svg class="react-atom" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="React">
+      <g fill="none" stroke="#61dafb" stroke-width="4">
+        <ellipse cx="50" cy="50" rx="46" ry="18"/>
+        <ellipse cx="50" cy="50" rx="46" ry="18" transform="rotate(60 50 50)"/>
+        <ellipse cx="50" cy="50" rx="46" ry="18" transform="rotate(120 50 50)"/>
+      </g>
+      <circle cx="50" cy="50" r="7" fill="#61dafb"/>
+    </svg>
+    <span class="conv-label">React / Next.js</span>
+  </div>
+
+  <!-- TAGLINE -->
+  <div class="tagline" id="tagline">
+    <span id="ttext"></span><span class="tcursor" id="tcursor"></span>
+  </div>
+
+  <!-- BADGES -->
+  <div class="badges">
+    <div class="badge b-tokens">
+      <span class="bval">~0</span>
+      <span class="blbl">AI tokens used</span>
+    </div>
+    <span class="dot"></span>
+    <div class="badge b-react">
+      <span class="bval">Next.js</span>
+      <span class="blbl">output ready</span>
+    </div>
+    <span class="dot"></span>
+    <div class="badge b-mcp">
+      <span class="bval">MCP</span>
+      <span class="blbl">available</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ── Typewriter (JS, no CSS ch-unit tricks) ──
+  const PHRASE = 'Instant conversion. Deterministic. Zero AI tokens.';
+  const tagline = document.getElementById('tagline');
+  const ttext   = document.getElementById('ttext');
+  const tcursor = document.getElementById('tcursor');
+  let i = 0;
+
+  function type() {
+    ttext.textContent = PHRASE.slice(0, i);
+    i++;
+    if (i <= PHRASE.length) {
+      setTimeout(type, 42);
+    } else {
+      // blink a few more times then hide cursor
+      setTimeout(() => tcursor.classList.add('done'), 2000);
+    }
+  }
+
+  // Start after logo animation settles
+  setTimeout(() => {
+    tagline.classList.add('visible');
+    type();
+  }, 2650);
+
+  // ── Glitch every 3s ──
+  const hw = document.getElementById('hw');
+  function glitch() {
+    hw.classList.remove('doing-glitch');
+    void hw.offsetWidth;
+    hw.classList.add('doing-glitch');
+    setTimeout(() => hw.classList.remove('doing-glitch'), 200);
+  }
+  setTimeout(() => { glitch(); setInterval(glitch, 3000); }, 4200);
+</script>
+</body>
+</html>

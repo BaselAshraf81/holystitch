@@ -4,3 +4,7 @@ dist/
 .env.local
 *.zip
 .DS_Store
+
+media/
+remotion/
+package-lock.json
