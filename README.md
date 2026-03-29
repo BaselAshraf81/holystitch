@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>⚡ HolyStitch</h1>
+<h1>⚡ stitch-to-react</h1>
 
 <p><strong>Google Stitch → Next.js. Compiled, not prompted. Zero tokens.</strong></p>
 
