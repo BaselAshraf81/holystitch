@@ -66,20 +66,29 @@ Your AI then handles the finishing touches — routing, font tokens, any edge-ca
 
 ## 🚀 Getting started
 
-### 1. Get your Stitch API key
+### 1. Clone and build
+
+```bash
+git clone https://github.com/BaselAshraf81/holystitch
+cd holystitch
+npm install
+npm run build
+```
+
+Note the full path to the folder — you'll need it in the next step.
+For example: `/Users/alice/holystitch`
+
+---
+
+### 2. Get your Stitch API key
 
 Go to your Stitch project settings and copy your API key.
 
-### 2. Find your project ID
-
-Open your Stitch project. The ID is in the URL:
-
-```
-https://stitch.withgoogle.com/project/12828868370598194178
-                                       ^^^^^^^^^^^^^^^^^^^
-```
+---
 
 ### 3. Configure your IDE
+
+Point your MCP host at the built package using the full path from step 1.
 
 **Claude Desktop** — add to `claude_desktop_config.json`:
 
@@ -87,8 +96,8 @@ https://stitch.withgoogle.com/project/12828868370598194178
 {
   "mcpServers": {
     "holystitch": {
-      "command": "npx",
-      "args": ["holystitch-mcp"],
+      "command": "node",
+      "args": ["/Users/alice/holystitch/dist/index.js"],
       "env": {
         "STITCH_API_KEY": "your-api-key-here"
       }
@@ -97,9 +106,24 @@ https://stitch.withgoogle.com/project/12828868370598194178
 }
 ```
 
-**Cursor / Windsurf / other MCP hosts** — add the same block to your IDE's MCP settings file.
+**Cursor / Windsurf / other MCP hosts** — add the same block to your IDE's MCP settings file, updating the path to match your machine.
 
-### 4. Run the conversion
+> Replace `/Users/alice/holystitch` with the actual path where you cloned the repo.
+
+---
+
+### 4. Find your project ID
+
+Open your Stitch project. The ID is in the URL:
+
+```
+https://stitch.withgoogle.com/project/12828868370598194178
+                                       ^^^^^^^^^^^^^^^^^^^
+```
+
+---
+
+### 5. Run the conversion
 
 Tell your AI assistant:
 
