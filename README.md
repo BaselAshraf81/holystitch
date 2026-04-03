@@ -100,7 +100,7 @@ Point your MCP host at the built package using the full path from step 1.
   "mcpServers": {
     "holystitch": {
       "command": "node",
-      "args": ["/Users/alice/holystitch/dist/index.js"],
+      "args": ["/Users/alice/holystitch/packages/mcp-server/dist/index.js"],
       "env": {
         "STITCH_API_KEY": "your-api-key-here"
       }
@@ -112,6 +112,10 @@ Point your MCP host at the built package using the full path from step 1.
 **Cursor / Windsurf / other MCP hosts** — add the same block to your IDE's MCP settings file, updating the path to match your machine.
 
 > Replace `/Users/alice/holystitch` with the actual path where you cloned the repo.
+> 
+> On Windows, use the full path with forward slashes or escaped backslashes, e.g.:
+> `"C:/Users/alice/holystitch/packages/mcp-server/dist/index.js"` or
+> `"C:\\Users\\alice\\holystitch\\packages\\mcp-server\\dist\\index.js"`
 
 ---
 
